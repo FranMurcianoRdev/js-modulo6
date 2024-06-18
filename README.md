@@ -1,4 +1,5 @@
 Juego de las siete media
+
 Vamos a implementar el juego de cartas de las 7 1/2 en modo solitario.
 
 Por si no conocéis las reglas del juego, os las explicamos brevemente:
