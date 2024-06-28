@@ -1,5 +1,5 @@
-import { Partida } from "./motor";
-import { obtenerMensajeCuandoMePlanto } from "./modelo";
+import { Partida } from "./modelo";
+import { obtenerMensajeCuandoMePlanto } from "./motor";
 
 export const muestraPuntuacion = (partida: Partida) => {
     const elementoPuntuacion = document.getElementById("puntuacion");

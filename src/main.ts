@@ -1,11 +1,11 @@
-import { obtenerNumeroAleatorio, sumarPuntuacion, dameCarta, gameOverExcesoPuntuacion, obtenerUrlCarta } from "./modelo";
-import { Partida } from "./motor";
+import { obtenerNumeroAleatorio, sumarPuntuacion, dameCarta, gameOverExcesoPuntuacion, obtenerUrlCarta } from "./motor";
+import { Partida } from "./modelo";
 import { muestraPuntuacion, pintarUrlImagen, mostrarMensajeGameOver, mePlantoClick, mostrarBotonNuevaPartida, mostrarBotonWhatIf, resetearJuego } from "./ui";
 
-const partida1 = new Partida();
+const partida = new Partida();
 
 document.addEventListener("DOMContentLoaded", () => {
-    muestraPuntuacion(partida1);
+    muestraPuntuacion(partida);
 
     const botonPedirCarta = document.getElementById("dame-carta");
     if (botonPedirCarta && botonPedirCarta instanceof HTMLButtonElement) {
@@ -29,25 +29,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const handleNuevaPartidaClick = () => {
-    resetearJuego(partida1);
+    resetearJuego(partida);
 };
 
 const handlePedirCartaClick = () => {
     const numeroAleatorio = obtenerNumeroAleatorio();
-    partida1.carta = dameCarta(numeroAleatorio);
-    const urlCarta = obtenerUrlCarta(partida1);
+    partida.carta = dameCarta(numeroAleatorio);
+    const urlCarta = obtenerUrlCarta(partida);
     pintarUrlImagen(urlCarta);
-    let valor = sumarPuntuacion(partida1);
-    partida1.puntuacion += valor;
-    muestraPuntuacion(partida1);
-    gameOverExcesoPuntuacion(partida1);
-    if (partida1.gameOver) {
+    let valor = sumarPuntuacion(partida);
+    partida.puntuacion += valor;
+    muestraPuntuacion(partida);
+    gameOverExcesoPuntuacion(partida);
+    if (partida.gameOver) {
         mostrarMensajeGameOver();
     }
 };
 
 const handlePlantarseClick = () => {
-    mePlantoClick(partida1);
+    mePlantoClick(partida);
     mostrarBotonNuevaPartida();
     mostrarBotonWhatIf();
     const elementoBotonMePlanto = document.getElementById("plantarse");
@@ -57,14 +57,14 @@ const handlePlantarseClick = () => {
 };
 
 const handleWhatIfClick = () => {
-    partida1.carta = dameCarta(obtenerNumeroAleatorio());
-    const urlCarta = obtenerUrlCarta(partida1);
+    partida.carta = dameCarta(obtenerNumeroAleatorio());
+    const urlCarta = obtenerUrlCarta(partida);
     pintarUrlImagen(urlCarta);
-    let valor = sumarPuntuacion(partida1);
-    partida1.puntuacion += valor;
-    muestraPuntuacion(partida1);
-    gameOverExcesoPuntuacion(partida1);
-    if (partida1.gameOver) {
+    let valor = sumarPuntuacion(partida);
+    partida.puntuacion += valor;
+    muestraPuntuacion(partida);
+    gameOverExcesoPuntuacion(partida);
+    if (partida.gameOver) {
         mostrarMensajeGameOver();
     }
 };
